@@ -1,0 +1,17 @@
+#map {
+  height: 500px;
+  max-width: 100%;
+}
+.container {
+  max-width: 100%;
+}
+#buttons {
+  max-width: 100%;
+}
+.btn {
+  padding-bottom: 0px;
+  padding-top: 3px;
+}
+body {
+  font-size: 150%;
+}
