@@ -1,0 +1,17 @@
+::ng-deep body {
+    background-color: #262626;
+    color: white;
+}
+.elephant {
+    max-height: 230px;
+    max-width: fit-content;
+    margin-top: 3vh;
+}
+.title {
+    color: orange;
+    text-align: center;
+    font-size: 4vw;
+}
+/* .elephant-row {
+    height: 100px;
+} */

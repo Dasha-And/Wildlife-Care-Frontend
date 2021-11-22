@@ -9,9 +9,10 @@ import { SpeciesBackOfficeComponent } from './species-back-office/species-back-o
 import {FormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import { AnimalsBackOfficeComponent } from './animals-back-office/animals-back-office.component';
+import { SelectWorkspaceComponent } from './select-workspace/select-workspace.component';
 
 const appRoutes: Routes = [
-  { path: '', component: MapComponent },
+  { path: '', component: SelectWorkspaceComponent },
   { path: 'species', component: SpeciesBackOfficeComponent},
   { path: 'animals', component: AnimalsBackOfficeComponent}
 
@@ -23,7 +24,8 @@ const appRoutes: Routes = [
     AppComponent,
     MapComponent,
     SpeciesBackOfficeComponent,
-    AnimalsBackOfficeComponent
+    AnimalsBackOfficeComponent,
+    SelectWorkspaceComponent
   ],
     imports: [
         BrowserModule,
