@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiBaseUrl: 'http://localhost:8181/'
+  apiBaseUrl: 'https://wildlife-care-backend.herokuapp.com/'
 };
 
 /*
