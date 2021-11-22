@@ -10,11 +10,13 @@ import {FormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import { AnimalsBackOfficeComponent } from './animals-back-office/animals-back-office.component';
 import { SelectWorkspaceComponent } from './select-workspace/select-workspace.component';
+import { LoginComponent } from './login/login.component';
 
 const appRoutes: Routes = [
   { path: '', component: SelectWorkspaceComponent },
   { path: 'species', component: SpeciesBackOfficeComponent},
-  { path: 'animals', component: AnimalsBackOfficeComponent}
+  { path: 'animals', component: AnimalsBackOfficeComponent},
+  { path: 'login', component: LoginComponent},
 
 ]
 
@@ -25,7 +27,8 @@ const appRoutes: Routes = [
     MapComponent,
     SpeciesBackOfficeComponent,
     AnimalsBackOfficeComponent,
-    SelectWorkspaceComponent
+    SelectWorkspaceComponent,
+    LoginComponent
   ],
     imports: [
         BrowserModule,

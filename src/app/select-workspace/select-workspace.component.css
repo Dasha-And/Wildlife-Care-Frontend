@@ -3,14 +3,40 @@
     color: white;
 }
 .elephant {
-    max-height: 230px;
-    max-width: fit-content;
+    max-height: 75vh;
+    max-width: 18vw;
     margin-top: 3vh;
 }
 .title {
     color: orange;
     text-align: center;
     font-size: 4vw;
+}
+
+.url {
+  border-radius: 12px;
+  border-width: 3px;
+  font-size: 1.4vw;
+  width: 35vw;
+  margin-bottom: 4vh;
+}
+
+.text {
+  text-align: center;
+  font-size: 2vw;
+  font-weight: normal;
+  margin-top: 4vh;
+  margin-bottom: 6vh;
+}
+
+.container {
+  margin-left: 0;
+  margin-right: 0;
+  max-width: 100%;
+}
+
+.btn {
+  font-size: 1.5vw;
 }
 /* .elephant-row {
     height: 100px;
