@@ -16,7 +16,7 @@ const appRoutes: Routes = [
   { path: '', component: SelectWorkspaceComponent },
   { path: 'species', component: SpeciesBackOfficeComponent},
   { path: 'animals', component: AnimalsBackOfficeComponent},
-  { path: 'login', component: LoginComponent},
+  { path: 'login/:nationalParkId', component: LoginComponent},
 
 ]
 

@@ -17,12 +17,12 @@
 
 <!--  input-->
   <div class="row justify-content-center form-outline">
-    <input type="text" placeholder="Workspace URL" class="form-control url">
+    <input type="text" placeholder="Workspace URL" class="form-control url" id="nationalParkId" name="nationalParkId">
   </div>
 
 <!--  button-->
   <div class="row justify-content-center">
-    <a href="" class="btn btn-primary col-1" routerLink="login">Confirm</a>
+    <button class="btn btn-primary col-1" (click)="goToLogin()">Confirm</button>
   </div>
 
 </div>

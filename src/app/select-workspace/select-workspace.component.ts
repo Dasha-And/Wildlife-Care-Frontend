@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { NationalParkService } from 'src/service/nationalPark.service';
 
 @Component({
   selector: 'app-select-workspace',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SelectWorkspaceComponent implements OnInit {
 
-  constructor() { }
+  public nationalParkId: number | undefined;
+
+  constructor(private router: Router, private nationalParkService: NationalParkService) { }
 
   ngOnInit(): void {
   }
 
+
+  goToLogin() {
+    var id:string = (<HTMLInputElement>document.getElementById("nationalParkId")).value;
+    this.nationalParkId = +id;
+    this.router.navigate(['/login/:nationalParkId'], {queryParams: {nationalParkId: this.nationalParkId}});
+    console.log(this.nationalParkId);
+  }
 }
