@@ -3,7 +3,7 @@ import {Animal} from "../../model/animal";
 import {HttpErrorResponse} from "@angular/common/http";
 import {AnimalService} from "../../service/animal.service";
 import {SpeciesService} from "../../service/species.service";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {NationalPark} from "../../model/nationalPark";
 import {NationalParkService} from "../../service/nationalPark.service";
 declare const L: any;
@@ -18,6 +18,8 @@ export class MapComponent implements OnInit {
   public animals : Animal[] = [];
   clicked : boolean = false;
   clickedAnimal! : Animal;
+  animalLat! :number;
+  animalLng! :number;
 
   //Aberdare
   public latitude : number[] = [-0.41640388574487475, -0.4569022963354209, -0.39491733839090776, -0.40681116796771183];
@@ -27,7 +29,7 @@ export class MapComponent implements OnInit {
   // public latitude : number[] = [46.45891564072584, 46.45992548222519, 46.45965524478609];
   // public longitude : number[] = [33.86569793382252, 33.86858852587495, 33.87040546945076];
 
-  constructor(private route: ActivatedRoute, private animalService : AnimalService, private speciesService : SpeciesService, private nationalParkService : NationalParkService) { }
+  constructor(private router: Router, private route: ActivatedRoute, private animalService : AnimalService, private speciesService : SpeciesService, private nationalParkService : NationalParkService) { }
 
   ngOnInit(): void {
 
@@ -86,6 +88,7 @@ export class MapComponent implements OnInit {
                       if (i %2 == 0) {
                         lati = lati + 0.0002;
                         lon = lon - 0.0002;
+
                       } else {
                         lati = lati - 0.0002;
                         lon = lon + 0.0002;
@@ -93,6 +96,8 @@ export class MapComponent implements OnInit {
                       // if (marker) {
                       //   map.removeLayer(marker)
                       // }
+                      this.animals[i].latitude = lati;
+                      this.animals[i].longitude = lon;
                       marker.setLatLng([lati, lon]);
                     }
 
@@ -115,4 +120,11 @@ export class MapComponent implements OnInit {
 
   }
 
+  close() {
+    this.clicked = false;
+  }
+
+  goToAnimals() {
+    this.router.navigate([':id/animals'], {queryParams: {id: this.nationalPark.id}});
+  }
 }

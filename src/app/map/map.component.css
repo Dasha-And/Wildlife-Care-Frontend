@@ -43,7 +43,7 @@
 }
 .info {
   height: 80vh;
-  width: 20vw;
+  width: 22.8vw;
   position: absolute;
   background-color: white;
   border-radius: 20px;
@@ -54,4 +54,15 @@
 }
 .text {
   color: orange;
+}
+::ng-deep h3 {
+  font-size: 1.5vw;
+}
+.long {
+  padding-left: 0.3vw;
+}
+#plus {
+  font-size: 1.5vw;
+  cursor: pointer;
+  color: #262626;
 }

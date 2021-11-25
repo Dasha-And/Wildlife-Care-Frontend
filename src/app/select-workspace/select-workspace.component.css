@@ -1,6 +1,7 @@
-::ng-deep body {
+.container {
     background-color: #262626;
     color: white;
+  height: 100vh;
 }
 .elephant {
     max-height: 75vh;

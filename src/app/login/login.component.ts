@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {HttpErrorResponse} from "@angular/common/http";
 import {NationalParkService} from "../../service/nationalPark.service";
@@ -10,7 +10,8 @@ import {Worker} from "../../model/worker";
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
+  encapsulation: ViewEncapsulation.Emulated,
 })
 export class LoginComponent implements OnInit {
   public nationalPark! : NationalPark;
@@ -43,8 +44,8 @@ export class LoginComponent implements OnInit {
         this.loginForm.reset();
         if (response.role == 'ROLE_ADMIN') {
           this.router.navigate(['/map/:id'], {queryParams: {id: this.nationalPark.id}});
-        } else if (response.role == 'ROLE_VETERINARIAN') {
-
+        } else if (response.role == 'ROLE_SUPERADMIN') {
+          this.router.navigate(['/species']);
         }
       },
       (error: HttpErrorResponse) => {

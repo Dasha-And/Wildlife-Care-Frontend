@@ -11,6 +11,7 @@ import {HttpClientModule} from "@angular/common/http";
 import { AnimalsBackOfficeComponent } from './animals-back-office/animals-back-office.component';
 import { SelectWorkspaceComponent } from './select-workspace/select-workspace.component';
 import { LoginComponent } from './login/login.component';
+import { WorkerBackOfficeComponent } from './worker-back-office/worker-back-office.component';
 
 const appRoutes: Routes = [
   { path: '', component: SelectWorkspaceComponent },
@@ -28,7 +29,8 @@ const appRoutes: Routes = [
     SpeciesBackOfficeComponent,
     AnimalsBackOfficeComponent,
     SelectWorkspaceComponent,
-    LoginComponent
+    LoginComponent,
+    WorkerBackOfficeComponent
   ],
     imports: [
         BrowserModule,

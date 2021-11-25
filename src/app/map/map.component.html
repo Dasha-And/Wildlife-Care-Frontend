@@ -16,8 +16,8 @@
         <!--      <div class="collapse navbar-collapse" id="navbarColor02">-->
         <div id="buttons" class="col-2">
           <div class="row justify-content-between">
-            <a routerLink="/species" class="btn btn-primary">Species<span class="sr-only">(current)</span></a>
-            <a routerLink="/animals" class="btn btn-primary">Animals<span class="sr-only">(current)</span></a>
+            <a class="btn btn-primary">Workers<span class="sr-only">(current)</span></a>
+            <a (click)="goToAnimals()" class="btn btn-primary">Animals<span class="sr-only">(current)</span></a>
           </div>
         </div>
 
@@ -37,16 +37,26 @@
     </div>
     <div class="row justify-content-start">
       <div *ngIf="clicked" class="col-4 info">
+        <div class="row justify-content-end">
+          <a class="col-2" (click)="close()" id="plus">x</a>
+        </div>
         <div class="row justify-content-start">
           <h3 class="col-3 text">Name:</h3>
           <h3 class="col-6">{{clickedAnimal.name}}</h3>
         </div>
         <div class="row justify-content-start">
-          <h3 class="col-4 text">Species:</h3>
+          <h3 class="col-3 text">Species:</h3>
           <h3 class="col-6">{{clickedAnimal.species}}</h3>
         </div>
-        
-        
+        <div class="row justify-content-start">
+          <h3 class="col-3 text">Latitude:</h3>
+          <h3 class="col-6">{{clickedAnimal.latitude}}</h3>
+        </div>
+        <div class="row justify-content-start">
+          <h3 class="col-4 text">Longitude:</h3>
+          <h3 class="col-6 long">{{clickedAnimal.longitude}}</h3>
+        </div>
+
       </div>
     </div>
   </div>

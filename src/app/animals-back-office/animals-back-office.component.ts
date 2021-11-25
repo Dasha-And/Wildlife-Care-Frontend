@@ -1,15 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {Animal} from "../../model/animal";
 import {HttpErrorResponse} from "@angular/common/http";
 import {AnimalService} from "../../service/animal.service";
 import {NgForm} from "@angular/forms";
 import {Species} from "../../model/species";
 import {SpeciesService} from "../../service/species.service";
+import {NationalPark} from "../../model/nationalPark";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-animals-back-office',
   templateUrl: './animals-back-office.component.html',
-  styleUrls: ['./animals-back-office.component.css']
+  styleUrls: ['./animals-back-office.component.css'],
+  encapsulation: ViewEncapsulation.Emulated,
 })
 export class AnimalsBackOfficeComponent implements OnInit {
   public animal: Animal[] = [];
@@ -17,7 +20,7 @@ export class AnimalsBackOfficeComponent implements OnInit {
   public deleteAnimal: Animal | undefined;
   public speciesAll: Species[] = [];
   public species: string = "Choose animal species";
-  constructor(private animalService : AnimalService, private speciesService : SpeciesService){}
+  constructor(private route: ActivatedRoute, private animalService : AnimalService, private speciesService : SpeciesService){}
 
   ngOnInit() {
     this.getAnimal();
@@ -35,14 +38,19 @@ export class AnimalsBackOfficeComponent implements OnInit {
     );
   }
   public getAnimal(): void {
-    this.animalService.getAnimals(2).subscribe(
-      (response : Animal[]) => {
-        this.animal = response;
-      },
-      (error : HttpErrorResponse) => {
-        alert(error.error);
-      }
-    );
+    this.route.queryParams.subscribe(params => {
+      const nationalParkId = params['id'];
+      console.log(nationalParkId);
+      this.animalService.getAnimals(nationalParkId).subscribe(
+        (response : Animal[]) => {
+          this.animal = response;
+        },
+        (error : HttpErrorResponse) => {
+          alert(error.error);
+        }
+      );
+    });
+
   }
 
   public onAddAnimal(addForm: NgForm): void {

@@ -4,4 +4,8 @@ export interface Animal {
   date_of_birth: Date;
   species: string;
   national_park_id: number;
+  latitude: number;
+  longitude: number;
+  heartRate: number;
+  temperature: number;
 }
