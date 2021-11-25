@@ -13,8 +13,8 @@ export class AnimalService {
   private apiServerUrl = environment.apiBaseUrl;
   constructor(private http : HttpClient) { }
 
-  public getAnimals(): Observable<Animal[]> {
-    return this.http.get<Animal[]>(`${this.apiServerUrl}/animals`);
+  public getAnimals(id: number): Observable<Animal[]> {
+    return this.http.get<Animal[]>(`${this.apiServerUrl}/${id}/animals`);
   }
   public addAnimal(animal : Animal): Observable<Animal> {
     console.log(animal);

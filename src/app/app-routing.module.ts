@@ -4,12 +4,15 @@ import {MapComponent} from "./map/map.component";
 import {AppComponent} from "./app.component";
 import { SelectWorkspaceComponent } from './select-workspace/select-workspace.component';
 import { LoginComponent } from './login/login.component';
+import {AnimalsBackOfficeComponent} from "./animals-back-office/animals-back-office.component";
 
 const routes: Routes = [{
   path: '',
   component: SelectWorkspaceComponent,
 },
-{ path: 'login/:nationalParkId', component: LoginComponent}];
+{ path: 'login/:nationalParkId', component: LoginComponent},
+  { path: ':id/animals', component: AnimalsBackOfficeComponent},
+  {path: 'map/:id', component: MapComponent}];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

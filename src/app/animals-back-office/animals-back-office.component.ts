@@ -35,7 +35,7 @@ export class AnimalsBackOfficeComponent implements OnInit {
     );
   }
   public getAnimal(): void {
-    this.animalService.getAnimals().subscribe(
+    this.animalService.getAnimals(2).subscribe(
       (response : Animal[]) => {
         this.animal = response;
       },

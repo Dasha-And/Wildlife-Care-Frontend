@@ -11,15 +11,21 @@
   </div>
 
 <!--  form-->
-  <div class="row justify-content-center form-outline">
-    <input id="username" type="text" placeholder="Username" class="form-control url">
-  </div>
-  <div class="row justify-content-center form-outline">
-    <input id="password" type="password" placeholder="Password" class="form-control url">
-</div>
+  <form [formGroup]="loginForm" (ngSubmit)="login()" >
+    <div class="row justify-content-center form-outline">
+      <input formControlName="username" id="username" type="text" name="username" placeholder="Username" class="form-control url">
+    </div>
+    <div class="row justify-content-center form-outline">
+      <input formControlName="password" id="password" type="password" name="password" placeholder="Password" class="form-control url">
+    </div>
 
-  <!--  button-->
-  <div class="row justify-content-center">
-    <button class="btn btn-primary col-1">Login</button>
+    <!--  button-->
+    <div class="row justify-content-center">
+    <button class="btn btn-primary col-1" type="submit">Login</button>
   </div>
+  </form>
+
+
+
+
 </div>

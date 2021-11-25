@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { MapComponent } from './map/map.component';
 import {RouterModule, Routes} from "@angular/router";
 import { SpeciesBackOfficeComponent } from './species-back-office/species-back-office.component';
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import { AnimalsBackOfficeComponent } from './animals-back-office/animals-back-office.component';
 import { SelectWorkspaceComponent } from './select-workspace/select-workspace.component';
@@ -35,7 +35,8 @@ const appRoutes: Routes = [
         AppRoutingModule,
         HttpClientModule,
         RouterModule.forRoot(appRoutes),
-        FormsModule
+        FormsModule,
+        ReactiveFormsModule
     ],
   providers: [],
   bootstrap: [AppComponent]
