@@ -42,10 +42,16 @@
   max-width: 100%;
 }
 .info {
-  background: white;
-  max-height: 10vh;
-  width: 10vw;
+  height: 80vh;
+  width: 20vw;
+  position: absolute;
+  background-color: white;
+  border-radius: 20px;
+  margin-top: 3vh;
+  margin-bottom: 3vh;
+  margin-left: 2vw;
+  padding-top: 3vh;
 }
-.holder {
-  background: transparent;
+.text {
+  color: orange;
 }

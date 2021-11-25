@@ -16,12 +16,17 @@ declare const L: any;
 export class MapComponent implements OnInit {
   nationalPark! : NationalPark;
   public animals : Animal[] = [];
-  //Arfica
-  // public latitude : number[] = [-0.41640388574487475, -0.4569022963354209, -0.39491733839090776, -0.40681116796771183];
-  // public longitude : number[] = [36.667437472833164, 36.674056399435756, 36.64047350037442, 36.6869172104318];
+  clicked : boolean = false;
+  clickedAnimal! : Animal;
+
+  //Aberdare
+  public latitude : number[] = [-0.41640388574487475, -0.4569022963354209, -0.39491733839090776, -0.40681116796771183];
+  public longitude : number[] = [36.667437472833164, 36.674056399435756, 36.64047350037442, 36.6869172104318];
+
   //Askania-Nova
-  public latitude : number[] = [46.45891564072584, 46.45992548222519, 46.45965524478609];
-  public longitude : number[] = [33.86569793382252, 33.86858852587495, 33.87040546945076];
+  // public latitude : number[] = [46.45891564072584, 46.45992548222519, 46.45965524478609];
+  // public longitude : number[] = [33.86569793382252, 33.86858852587495, 33.87040546945076];
+
   constructor(private route: ActivatedRoute, private animalService : AnimalService, private speciesService : SpeciesService, private nationalParkService : NationalParkService) { }
 
   ngOnInit(): void {
@@ -69,19 +74,26 @@ export class MapComponent implements OnInit {
                     let lati : number = this.latitude[i];
                     console.log(lati);
                     let lon : number = this.longitude[i];
-                    var marker : any;
+                    var marker = L.marker([lati, lon], {icon: icon}).addTo(map).bindPopup(this.animals[i].name);
+
+                    const onClick = () => {
+                      this.clicked = true;
+                      this.clickedAnimal = this.animals[i];
+                    }
+                    marker.on('click', onClick)
+
                     const increment = () =>{
                       if (i %2 == 0) {
-                        lati = lati + 0.00002;
-                        lon = lon - 0.00002;
+                        lati = lati + 0.0002;
+                        lon = lon - 0.0002;
                       } else {
-                        lati = lati - 0.00002;
-                        lon = lon + 0.00002;
+                        lati = lati - 0.0002;
+                        lon = lon + 0.0002;
                       }
-                      if (marker) {
-                        map.removeLayer(marker)
-                      }
-                      marker = L.marker([lati, lon], {icon: icon}).addTo(map).bindPopup(this.animals[i].name);
+                      // if (marker) {
+                      //   map.removeLayer(marker)
+                      // }
+                      marker.setLatLng([lati, lon]);
                     }
 
                     setInterval(() => {
@@ -102,15 +114,5 @@ export class MapComponent implements OnInit {
 
 
   }
-  // public getAnimal(): void {
-  //   this.animalService.getAnimals().subscribe(
-  //     (response : Animal[]) => {
-  //       this.animals = response;
-  //     },
-  //     (error : HttpErrorResponse) => {
-  //       alert(error.error);
-  //     }
-  //   );
-  // }
 
 }

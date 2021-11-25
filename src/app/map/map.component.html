@@ -35,6 +35,20 @@
         <!--      </div>-->
       </nav>
     </div>
+    <div class="row justify-content-start">
+      <div *ngIf="clicked" class="col-4 info">
+        <div class="row justify-content-start">
+          <h3 class="col-3 text">Name:</h3>
+          <h3 class="col-6">{{clickedAnimal.name}}</h3>
+        </div>
+        <div class="row justify-content-start">
+          <h3 class="col-4 text">Species:</h3>
+          <h3 class="col-6">{{clickedAnimal.species}}</h3>
+        </div>
+        
+        
+      </div>
+    </div>
   </div>
 
 </div>
