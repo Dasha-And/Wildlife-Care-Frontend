@@ -5,6 +5,7 @@ import {AppComponent} from "./app.component";
 import { SelectWorkspaceComponent } from './select-workspace/select-workspace.component';
 import { LoginComponent } from './login/login.component';
 import {AnimalsBackOfficeComponent} from "./animals-back-office/animals-back-office.component";
+import {WorkersBackOfficeComponent} from "./worker-back-office/worker-back-office.component";
 
 const routes: Routes = [{
   path: '',
@@ -12,6 +13,7 @@ const routes: Routes = [{
 },
 { path: 'login/:nationalParkId', component: LoginComponent},
   { path: ':id/animals', component: AnimalsBackOfficeComponent},
+  { path: ':id/workers', component: WorkersBackOfficeComponent},
   {path: 'map/:id', component: MapComponent}];
 
 @NgModule({

@@ -14,8 +14,8 @@ export class WorkerService {
 
   constructor(private http : HttpClient) { }
 
-  public getWorker(): Observable<Worker[]> {
-    return this.http.get<Worker[]>(`${this.apiServerUrl}/workers`);
+  public getWorkers(id : number): Observable<Worker[]> {
+    return this.http.get<Worker[]>(`${this.apiServerUrl}/${id}/workers`);
   }
 
   public getWorkerById(workerId : number): Observable<Worker> {
@@ -26,7 +26,7 @@ export class WorkerService {
 
   public addWorker(worker : Worker): Observable<Worker> {
     console.log(worker);
-    return this.http.post<Worker>(`${this.apiServerUrl}/registration`, worker);
+    return this.http.post<Worker>(`${this.apiServerUrl}/create_worker`, worker);
   }
 
   public login(worker : LoginForm): Observable<Worker> {
@@ -34,12 +34,16 @@ export class WorkerService {
     return this.http.post<LoginForm>(`${this.apiServerUrl}/login`, worker);
   }
 
-  public updateWorker(worker : Worker, id : number): Observable<Worker> {
-    let params = new HttpParams()
-      .set('id', id);
-    return this.http.put<Worker>(`${this.apiServerUrl}/update_worker`, worker, {params: params});
+  public updateWorker(worker : Worker): Observable<Worker> {
+    return this.http.put<Worker>(`${this.apiServerUrl}/update_worker`, worker);
   }
   public deleteWorker(workerId : number): Observable<void> {
     return this.http.delete<void>(`${this.apiServerUrl}/deleteWorker/${workerId}`);
+  }
+
+  public getIconUrl(id : number){
+    let params = new HttpParams()
+      .set('id', id);
+    return this.http.get(`${this.apiServerUrl}/get_worker_icon_url`, {params: params, responseType: "text"});
   }
 }

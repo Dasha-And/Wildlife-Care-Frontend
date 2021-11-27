@@ -1,0 +1,22 @@
+.container {
+  max-width: 100%;
+}
+::ng-deep table {
+  font-size: 1.3vw;
+}
+.link {
+  color: white;
+  font-size: 1.2vw;
+}
+#searchName {
+  font-size: 1.3vw;
+}
+#add {
+  font-size: 1.5vw;
+}
+#title {
+  font-size: 2vw;
+}
+::ng-deep body {
+  background-color: white;
+}

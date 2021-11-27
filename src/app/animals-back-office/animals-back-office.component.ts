@@ -19,6 +19,7 @@ export class AnimalsBackOfficeComponent implements OnInit {
   public editAnimal: Animal | undefined;
   public deleteAnimal: Animal | undefined;
   public speciesAll: Species[] = [];
+  nationalParkId!: number;
   public species: string = "Choose animal species";
   constructor(private route: ActivatedRoute, private animalService : AnimalService, private speciesService : SpeciesService){}
 
@@ -40,6 +41,7 @@ export class AnimalsBackOfficeComponent implements OnInit {
   public getAnimal(): void {
     this.route.queryParams.subscribe(params => {
       const nationalParkId = params['id'];
+      this.nationalParkId = nationalParkId;
       console.log(nationalParkId);
       this.animalService.getAnimals(nationalParkId).subscribe(
         (response : Animal[]) => {
