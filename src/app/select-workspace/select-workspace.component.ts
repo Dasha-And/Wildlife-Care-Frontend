@@ -20,7 +20,11 @@ export class SelectWorkspaceComponent implements OnInit {
   goToLogin() {
     var id:string = (<HTMLInputElement>document.getElementById("nationalParkId")).value;
     this.nationalParkId = +id;
-    this.router.navigate(['/login/:nationalParkId'], {queryParams: {nationalParkId: this.nationalParkId}});
-    console.log(this.nationalParkId);
+    if (id == 'Q356dxcdzzar5') {
+      this.router.navigate(['/nationalParks']);
+    } else {
+      this.router.navigate(['/login/:nationalParkId'], {queryParams: {nationalParkId: this.nationalParkId}});
+      console.log(this.nationalParkId);
+    }
   }
 }

@@ -1,155 +1,160 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" style="color:white; margin-right: 80px;">Species Manager</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarColor02">
-    <div><a class="btn btn-primary" (click)="onOpenAddModal()" >Add species<span class="sr-only">(current)</span></a></div>
-    <form class="form-inline my-2 my-lg-0">
-      <input type="search" (ngModelChange)="searchSpecies(key.value)" #key="ngModel" ngModel
-             name="key" id="searchName" class="form-control mr-sm-2" placeholder="Search for species..." required>
-    </form>
-  </div>
-</nav>
-<br>
-<br>
-<div class="container" id="main-container">
-  <table class="table table-striped">
-    <thead>
-    <tr>
-      <th scope="col">Name</th>
-      <th scope="col">Heart rate low limit</th>
-      <th scope="col">Heart rate high limit</th>
-      <th scope="col">Normal temperature</th>
-      <th scope="col">Icon URL</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr *ngFor="let species of species">
-      <td>{{species.name}}</td>
-      <td>{{species.heart_rate_low_limit}}</td>
-      <td>{{species.heart_rate_high_limit}}</td>
-      <td>{{species.normal_temperature}}</td>
-      <td>{{species.icon_url}}</td>
-      <td>
-        <div class="float-right btn-group btn-group-sm"><a (click)="onOpenModal(species, 'edit')" class="btn btn-primary tooltips tools" data-placement="top" data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-pencil"></i> </a>
-          <a (click)="onOpenModal(species, 'delete')" class="btn btn-secondary tooltips tools" data-placement="top" data-toggle="tooltip" data-original-title="Delete"><i class="fa fa-times"></i></a></div>
-      </td>
-    </tr>
-    </tbody>
-  </table>
-</div>
-
-<!-- Add Species Modal -->
-<div class="modal fade" id="addSpeciesModal" tabindex="-1" role="dialog" aria-labelledby="addSpeciesModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="addSpeciesModalLabel">Add Species</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form #addForm="ngForm" (ngSubmit)="onAddSpecies(addForm)">
-          <div class="form-group">
-            <label for="name">Name</label>
-            <input type="text" ngModel name="name" class="form-control" id="name" placeholder="Name" required>
-          </div>
-          <div class="form-group">
-            <label for="heart_rate_low_limit">Heart rate low limit</label>
-            <input type="text" ngModel name="heart_rate_low_limit" class="form-control" id="heart_rate_low_limit" placeholder="Heart rate low limit" required>
-          </div>
-          <div class="form-group">
-            <label for="heart_rate_high_limit">Heart rate high limit</label>
-            <input type="text" ngModel name="heart_rate_high_limit" class="form-control" id="heart_rate_high_limit" placeholder="Heart rate high limit" required>
-          </div>
-          <div class="form-group">
-            <label for="normal_temperature">Normal temperature</label>
-            <input type="text" ngModel name="normal_temperature" class="form-control" id="normal_temperature" placeholder="Heart rate high limit" required>
-          </div>
-          <div class="form-group">
-            <label for="icon_url">Icon URL</label>
-            <input type="text" ngModel name="icon_url" class="form-control" id="icon_url" placeholder="Heart rate high limit" required>
-          </div>
-          <div class="modal-footer">
-            <button type="button" id="add-species-form" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button [disabled]="addForm.invalid" type="submit" class="btn btn-primary" >Save changes</button>
-          </div>
-        </form>
-      </div>
+<div class="container">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark row">
+    <a class="navbar-brand col-2" style="color:white; margin-right: 80px;">Species Manager</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse col-8 justify-content-around" id="navbarColor02">
+      <div><a class="btn btn-primary" (click)="onOpenAddModal()" style="color: white">Add species<span class="sr-only">(current)</span></a></div>
+      <div><a class="btn btn-primary" routerLink="/nationalParks">National park manager<span class="sr-only">(current)</span></a></div>
+      <div><a class="btn btn-primary" routerLink="/vaccines">Vaccine manager<span class="sr-only">(current)</span></a></div>
+      <form class="form-inline my-2 my-lg-0">
+        <input type="search" (ngModelChange)="searchSpecies(key.value)" #key="ngModel" ngModel
+               name="key" id="searchName" class="form-control mr-sm-2" placeholder="Search for species..." required>
+      </form>
     </div>
+  </nav>
+  <br>
+  <br>
+  <div class="container" id="main-container">
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Heart rate low limit</th>
+        <th scope="col">Heart rate high limit</th>
+        <th scope="col">Normal temperature</th>
+        <th scope="col">Icon URL</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let species of species">
+        <td>{{species.name}}</td>
+        <td>{{species.heart_rate_low_limit}}</td>
+        <td>{{species.heart_rate_high_limit}}</td>
+        <td>{{species.normal_temperature}}</td>
+        <td>{{species.icon_url}}</td>
+        <td>
+          <div class="float-right btn-group btn-group-sm"><a (click)="onOpenModal(species, 'edit')" class="btn btn-primary tooltips tools" data-placement="top" data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-pencil"></i> </a>
+            <a (click)="onOpenModal(species, 'delete')" class="btn btn-secondary tooltips tools" data-placement="top" data-toggle="tooltip" data-original-title="Delete"><i class="fa fa-times"></i></a></div>
+        </td>
+      </tr>
+      </tbody>
+    </table>
   </div>
-</div>
 
-<!-- Edit Modal -->
-<div class="modal fade" id="updateSpeciesModal" tabindex="-1" role="dialog" aria-labelledby="speciesEditModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="updateSpeciesModalLabel">Edit {{editSpecies?.name}}</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form #editForm="ngForm">
-          <input type="hidden" ngModel="{{editSpecies?.id}}" name="id" class="form-control" id="id" placeholder="Id">
-          <div class="form-group">
-            <label for="edit_name">Name</label>
-            <input type="text" ngModel="{{editSpecies?.name}}" name="name" class="form-control" id="edit_name" aria-describedby="emailHelp" placeholder="Name">
-          </div>
-          <div class="form-group">
-            <label for="edit_heart_rate_low_limit">Heart rate low limit</label>
-            <input type="text" ngModel="{{editSpecies?.heart_rate_low_limit}}" name="heart_rate_low_limit" class="form-control" id="edit_heart_rate_low_limit" placeholder="Heart rate low limit">
-          </div>
-          <div class="form-group">
-            <label for="edit_heart_rate_high_limit">Heart rate high limit</label>
-            <input type="text" ngModel="{{editSpecies?.heart_rate_high_limit}}" name="heart_rate_high_limit" class="form-control" id="edit_heart_rate_high_limit" placeholder="Heart rate high limit">
-          </div>
-          <div class="form-group">
-            <label for="edit_normal_temperature">Normal temperature</label>
-            <input type="text" ngModel="{{editSpecies?.normal_temperature}}" name="normal_temperature" class="form-control" id="edit_normal_temperature" placeholder="Normal temperature">
-          </div>
-          <div class="form-group">
-            <label for="edit_icon_url">Icon URL</label>
-            <input type="text" ngModel="{{editSpecies?.icon_url}}" name="icon_url" class="form-control" id="edit_icon_url" placeholder="Icon URL">
-          </div>
-          <div class="modal-footer">
-            <button type="button" id="" data-dismiss="modal" class="btn btn-secondary">Close</button>
-            <button (click)="onUpdateSpecies(editForm.value)" data-dismiss="modal" class="btn btn-primary" >Save changes</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Delete Modal -->
-<div class="modal fade" id="deleteSpeciesModal" tabindex="-1" role="dialog" aria-labelledby="deleteModelLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="deleteModelLabel">Delete Species</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <p>Are you sure you want to delete species {{deleteSpecies?.name}}?</p>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-          <button (click)="onDeleteSpecies(deleteSpecies?.id!)" class="btn btn-danger" data-dismiss="modal">Yes</button>
+  <!-- Add Species Modal -->
+  <div class="modal fade" id="addSpeciesModal" tabindex="-1" role="dialog" aria-labelledby="addSpeciesModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="addSpeciesModalLabel">Add Species</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form #addForm="ngForm" (ngSubmit)="onAddSpecies(addForm)">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" ngModel name="name" class="form-control" id="name" placeholder="Name" required>
+            </div>
+            <div class="form-group">
+              <label for="heart_rate_low_limit">Heart rate low limit</label>
+              <input type="text" ngModel name="heart_rate_low_limit" class="form-control" id="heart_rate_low_limit" placeholder="Heart rate low limit" required>
+            </div>
+            <div class="form-group">
+              <label for="heart_rate_high_limit">Heart rate high limit</label>
+              <input type="text" ngModel name="heart_rate_high_limit" class="form-control" id="heart_rate_high_limit" placeholder="Heart rate high limit" required>
+            </div>
+            <div class="form-group">
+              <label for="normal_temperature">Normal temperature</label>
+              <input type="text" ngModel name="normal_temperature" class="form-control" id="normal_temperature" placeholder="Heart rate high limit" required>
+            </div>
+            <div class="form-group">
+              <label for="icon_url">Icon URL</label>
+              <input type="text" ngModel name="icon_url" class="form-control" id="icon_url" placeholder="Heart rate high limit" required>
+            </div>
+            <div class="modal-footer">
+              <button type="button" id="add-species-form" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button [disabled]="addForm.invalid" type="submit" class="btn btn-primary" >Save changes</button>
+            </div>
+          </form>
         </div>
       </div>
     </div>
   </div>
-</div>
 
-<!-- Notification for no species -->
-<div *ngIf="species?.length == 0" class="col-lg-12 col-md-12 col-xl-12">
-  <div class="alert alert-info" role="alert">
-    <h4 class="alert-heading">NO SPECIES!</h4>
-    <p>No Species were found.</p>
+  <!-- Edit Modal -->
+  <div class="modal fade" id="updateSpeciesModal" tabindex="-1" role="dialog" aria-labelledby="speciesEditModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="updateSpeciesModalLabel">Edit {{editSpecies?.name}}</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form #editForm="ngForm">
+            <input type="hidden" ngModel="{{editSpecies?.id}}" name="id" class="form-control" id="id" placeholder="Id">
+            <div class="form-group">
+              <label for="edit_name">Name</label>
+              <input type="text" ngModel="{{editSpecies?.name}}" name="name" class="form-control" id="edit_name" aria-describedby="emailHelp" placeholder="Name">
+            </div>
+            <div class="form-group">
+              <label for="edit_heart_rate_low_limit">Heart rate low limit</label>
+              <input type="text" ngModel="{{editSpecies?.heart_rate_low_limit}}" name="heart_rate_low_limit" class="form-control" id="edit_heart_rate_low_limit" placeholder="Heart rate low limit">
+            </div>
+            <div class="form-group">
+              <label for="edit_heart_rate_high_limit">Heart rate high limit</label>
+              <input type="text" ngModel="{{editSpecies?.heart_rate_high_limit}}" name="heart_rate_high_limit" class="form-control" id="edit_heart_rate_high_limit" placeholder="Heart rate high limit">
+            </div>
+            <div class="form-group">
+              <label for="edit_normal_temperature">Normal temperature</label>
+              <input type="text" ngModel="{{editSpecies?.normal_temperature}}" name="normal_temperature" class="form-control" id="edit_normal_temperature" placeholder="Normal temperature">
+            </div>
+            <div class="form-group">
+              <label for="edit_icon_url">Icon URL</label>
+              <input type="text" ngModel="{{editSpecies?.icon_url}}" name="icon_url" class="form-control" id="edit_icon_url" placeholder="Icon URL">
+            </div>
+            <div class="modal-footer">
+              <button type="button" id="" data-dismiss="modal" class="btn btn-secondary">Close</button>
+              <button (click)="onUpdateSpecies(editForm.value)" data-dismiss="modal" class="btn btn-primary" >Save changes</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
   </div>
+
+  <!-- Delete Modal -->
+  <div class="modal fade" id="deleteSpeciesModal" tabindex="-1" role="dialog" aria-labelledby="deleteModelLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="deleteModelLabel">Delete Species</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Are you sure you want to delete species {{deleteSpecies?.name}}?</p>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+            <button (click)="onDeleteSpecies(deleteSpecies?.id!)" class="btn btn-danger" data-dismiss="modal">Yes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Notification for no species -->
+  <div *ngIf="species?.length == 0" class="col-lg-12 col-md-12 col-xl-12">
+    <div class="alert alert-info" role="alert">
+      <h4 class="alert-heading">NO SPECIES!</h4>
+      <p>No Species were found.</p>
+    </div>
+  </div>
+
 </div>

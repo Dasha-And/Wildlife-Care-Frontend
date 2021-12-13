@@ -12,11 +12,13 @@ import { AnimalsBackOfficeComponent } from './animals-back-office/animals-back-o
 import { SelectWorkspaceComponent } from './select-workspace/select-workspace.component';
 import { LoginComponent } from './login/login.component';
 import { WorkersBackOfficeComponent } from './worker-back-office/worker-back-office.component';
+import { SuperadminBackOfficeComponent } from './superadmin-back-office/superadmin-back-office.component';
+import { VaccineBackOfficeComponent } from './vaccine-back-office/vaccine-back-office.component';
+import { VeterinarianBackOfficeComponent } from './veterinarian-back-office/veterinarian-back-office.component';
 
 const appRoutes: Routes = [
   { path: '', component: SelectWorkspaceComponent },
   { path: 'species', component: SpeciesBackOfficeComponent},
-  { path: 'animals', component: AnimalsBackOfficeComponent},
   { path: 'login/:nationalParkId', component: LoginComponent},
 
 ]
@@ -30,7 +32,10 @@ const appRoutes: Routes = [
     AnimalsBackOfficeComponent,
     SelectWorkspaceComponent,
     LoginComponent,
-    WorkersBackOfficeComponent
+    WorkersBackOfficeComponent,
+    SuperadminBackOfficeComponent,
+    VaccineBackOfficeComponent,
+    VeterinarianBackOfficeComponent
   ],
     imports: [
         BrowserModule,

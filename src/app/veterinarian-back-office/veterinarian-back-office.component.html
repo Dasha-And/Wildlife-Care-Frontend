@@ -1,0 +1,164 @@
+<div class="container">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark row">
+    <a class="navbar-brand col-2" style="color:white; margin-right: 0" id="title">Vaccination Manager</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse col-8 justify-content-between" id="navbarColor02">
+      <div><a class="btn btn-primary link" (click)="onOpenAddModal()" id="add">Add animalVaccination<span class="sr-only">(current)</span></a></div>
+      <form class="form-inline my-2 my-lg-0">
+        <input type="search" (ngModelChange)="searchAnimalVaccination(key.value)" #key="ngModel" ngModel
+               name="key" id="searchName" class="form-control mr-sm-2" placeholder="Search for animalVaccination..." required>
+      </form>
+    </div>
+  </nav>
+  <br>
+  <br>
+  <div class="container" id="main-container">
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th scope="col">Vaccine</th>
+        <th scope="col">Animal</th>
+        <th scope="col">Date</th>
+        <th scope="col">Doze</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let animalVaccination of animalVaccination">
+        <td>{{animalVaccination.vaccine}}</td>
+        <td>{{animalVaccination.animal}}</td>
+        <td>{{animalVaccination.date}}</td>
+        <td>{{animalVaccination.doze}}</td>
+        <td>
+          <div class="btn-group btn-group-sm"><a (click)="onOpenModal(animalVaccination, 'edit')" class="btn btn-primary tooltips tools link" data-placement="top" data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-pencil"></i> </a>
+            <a (click)="onOpenModal(animalVaccination, 'delete')" class="btn btn-secondary tooltips tools link" data-placement="top" data-toggle="tooltip" data-original-title="Delete"><i class="fa fa-times"></i></a></div>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Add AnimalVaccination Modal -->
+  <div class="modal fade" id="addAnimalVaccinationModal" tabindex="-1" role="dialog" aria-labelledby="addAnimalVaccinationModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="addAnimalVaccinationModalLabel">Add AnimalVaccination</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form #addForm="ngForm" (ngSubmit)="onAddAnimalVaccination(addForm)">
+            <div class="form-group">
+            <label for="vaccine">Vacine</label>
+            <select class="form-select" id="vaccine" name="vaccine" ngModel="{{vaccine}}">
+              <option name="role" [ngValue]="vaccine.name" *ngFor="let vaccine of vaccineAll">{{vaccine.name}}
+              </option>
+            </select>
+          </div>
+
+            <div class="form-group">
+            <label for="animal">Animal</label>
+            <select class="form-select" id="animal" name="animal" ngModel="{{animal}}">
+              <option name="role" [ngValue]="animal.name" *ngFor="let animal of animalAll">{{animal.name}}
+              </option>
+            </select>
+          </div>
+
+            <div class="form-group">
+              <label for="date">Date</label>
+              <input type="date" ngModel name="date" class="form-control" id="date" placeholder="Date" required>
+            </div>
+
+            <div class="form-group">
+              <label for="doze">Doze (in ml)</label>
+              <input type="text" ngModel name="doze" class="form-control" id="doze" placeholder="Doze" required>
+            </div>
+            <div class="modal-footer">
+              <button type="button" id="add-animalVaccination-form" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary" >Save changes</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Edit Modal -->
+  <div class="modal fade" id="updateAnimalVaccinationModal" tabindex="-1" role="dialog" aria-labelledby="animalVaccinationEditModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="updateAnimalVaccinationModalLabel">Edit</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form #editForm="ngForm">
+            <input type="hidden" ngModel="{{editAnimalVaccination?.id}}" name="id" class="form-control" id="id" placeholder="Id">
+            <div class="form-group">
+              <label for="edit_vaccine">Vaccine</label>
+              <select class="form-select" id="edit_vaccine" name="vacine" ngModel="{{editAnimalVaccination?.vaccine}}">
+                <option *ngFor="let vaccine of vaccineAll">{{vaccine.name}}
+                </option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="edit_animal">Animal</label>
+              <select class="form-select" id="edit_animal" name="animal" ngModel="{{editAnimalVaccination?.animal}}">
+                <option *ngFor="let animal of animalAll">{{animal.name}}
+                </option>
+              </select>
+            </div>
+            <div>
+            <label for="edit_date">Date</label>
+            <input type="date" ngModel="{{editAnimalVaccination?.date}}" name="date" class="form-control" id="edit_date" aria-describedby="emailHelp" placeholder="Date">
+          </div>
+        <div class="form-group">
+            <label for="edit_doze">Doze</label>
+            <input type="text" ngModel="{{editAnimalVaccination?.doze}}" name="doze" class="form-control" id="edit_doze" aria-describedby="emailHelp" placeholder="Doze">
+          </div>
+            <div class="modal-footer">
+              <button type="button" id="" data-dismiss="modal" class="btn btn-secondary">Close</button>
+              <button (click)="onUpdateAnimalVaccination(editForm.value)" data-dismiss="modal" class="btn btn-primary" >Save changes</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Delete Modal -->
+  <div class="modal fade" id="deleteAnimalVaccinationModal" tabindex="-1" role="dialog" aria-labelledby="deleteModelLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="deleteModelLabel">Delete AnimalVaccination</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Are you sure you want to delete animal vaccination?</p>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+            <button (click)="onDeleteAnimalVaccination(deleteAnimalVaccination?.id!)" class="btn btn-danger" data-dismiss="modal">Yes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Notification for no animalVaccination -->
+  <div *ngIf="animalVaccination.length == 0" class="col-lg-12 col-md-12 col-xl-12">
+    <div class="alert alert-info" role="alert">
+      <h4 class="alert-heading">NO VACCINATIONS!</h4>
+      <p>No animal vaccinations were found.</p>
+    </div>
+  </div>
+
+</div>
+

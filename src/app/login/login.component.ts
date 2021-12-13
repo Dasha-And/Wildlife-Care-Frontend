@@ -45,7 +45,9 @@ export class LoginComponent implements OnInit {
         if (response.role == 'ROLE_ADMIN') {
           this.router.navigate(['/map/:id'], {queryParams: {id: this.nationalPark.id}});
         } else if (response.role == 'ROLE_SUPERADMIN') {
-          this.router.navigate(['/species']);
+          this.router.navigate(['/nationalParks']);
+        } else if (response.role == 'ROLE_VETERINARIAN') {
+          this.router.navigate([':id/veterinarian'], {queryParams: {id : this.nationalPark.id}})
         }
       },
       (error: HttpErrorResponse) => {

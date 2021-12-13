@@ -29,12 +29,12 @@ export class MapComponent implements OnInit {
   map :any;
   markers: any;
   //Aberdare
-  public latitude : number[] = [-0.41640388574487475, -0.4569022963354209, -0.39491733839090776, -0.40681116796771183];
-  public longitude : number[] = [36.667437472833164, 36.674056399435756, 36.64047350037442, 36.6869172104318];
+  // public latitude : number[] = [-0.41640388574487475, -0.4569022963354209, -0.39491733839090776, -0.40681116796771183, -0.2855787908790075, -0.36901633554975766, -0.44223416638951163, -0.6688189803011032];
+   //public longitude : number[] = [36.667437472833164, 36.674056399435756, 36.64047350037442, 36.6869172104318, 36.59444881811638, 36.73998674820364, 36.73767454804506, 36.75000628222412];
 
   //Askania-Nova
-  // public latitude : number[] = [46.45891564072584, 46.45992548222519, 46.45965524478609];
-  // public longitude : number[] = [33.86569793382252, 33.86858852587495, 33.87040546945076];
+   public latitude : number[] = [46.45891564072584, 46.45992548222519, 46.45965524478609, 46.46063889249798, 46.45605177007764, 46.45873819805094];
+   public longitude : number[] = [33.86569793382252, 33.86858852587495, 33.87040546945076, 33.87522012428116, 33.879708372983906, 33.877942504641844];
 
   constructor(private workerService: WorkerService, private router: Router, private route: ActivatedRoute, private animalService : AnimalService, private speciesService : SpeciesService, private nationalParkService : NationalParkService) { }
 
@@ -96,6 +96,8 @@ export class MapComponent implements OnInit {
                 let lati : number = this.latitude[i];
                 console.log(lati);
                 let lon : number = this.longitude[i];
+                let heartRate : number = Math.random() * (120 - 65) + 65;
+                let temperature : number = Math.random() * (39 - 36) + 36;
                 var marker = L.marker([lati, lon], {icon: icon}).addTo(this.map).bindPopup(this.animals[i].name);
                 this.markers.addLayer(marker);
                 const onClick = () => {
@@ -108,13 +110,22 @@ export class MapComponent implements OnInit {
                   if (i %2 == 0) {
                     lati = lati + 0.0002;
                     lon = lon - 0.0002;
-
+                    heartRate = heartRate + 0.1;
+                    // if (temperature < 39.9) {
+                    //   temperature = temperature + 0.1;
+                    // } else {
+                    //   temperature = temperature - 0.1
+                    // }
                   } else {
                     lati = lati - 0.0002;
                     lon = lon + 0.0002;
+                    heartRate = heartRate - 0.1;
+                    // temperature = temperature - 0.1;
                   }
                   this.animals[i].latitude = lati;
                   this.animals[i].longitude = lon;
+                  this.animals[i].heartRate = Math.round(heartRate);
+                  this.animals[i].temperature = Math.round(temperature * 100) / 100;
                   marker.setLatLng([lati, lon]);
                 }
 
@@ -190,5 +201,16 @@ export class MapComponent implements OnInit {
         }
       );
     }
+  }
+  public onOpenModal(): void {
+    const container = document.getElementById('map');
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.style.display = 'none';
+    button.setAttribute('data-toggle', 'modal');
+    button.setAttribute('data-target', '#dangerModal');
+    // @ts-ignore
+    container.appendChild(button);
+    button.click();
   }
 }
