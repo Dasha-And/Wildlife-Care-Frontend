@@ -1,27 +1,23 @@
 # WildlifeCareFront
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.9.
+### Login form
+![](https://user-images.githubusercontent.com/69506862/145847362-c926ea49-f309-4862-93ff-a234e14f23ca.png)
 
-## Development server
+### Animal map with animal infobox
+![](https://user-images.githubusercontent.com/69506862/145845979-9ca167af-aee9-4795-8ff8-198f2ca23331.png)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+### National park workers map
+![](https://user-images.githubusercontent.com/69506862/145845953-bd11be25-2bb6-4413-86be-182a1ab5ae49.png)
 
-## Code scaffolding
+### Animal manager
+![](https://user-images.githubusercontent.com/69506862/145845934-8eb2554b-902d-43b0-a34a-8337bfa35efc.png)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### Adding animal form
+![](https://user-images.githubusercontent.com/69506862/145845921-bb15546d-03e1-454e-82c2-c66621dcf2b1.png)
 
-## Build
+### Notification that animal is in danger (it health indicators are not normal or its coordinates are not changing for a long time)
+![](https://user-images.githubusercontent.com/69506862/145847373-771aa8bd-ff02-4b33-8378-bf821b1ec0f0.png)
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
