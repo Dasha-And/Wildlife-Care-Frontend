@@ -1,6 +1,6 @@
 # WildlifeCareFront
 
-Frontend part for system for monitoring wild animals in national parks in reserves. It allows watch their geolocation and health (temperature and heart rate) which ges from IoT, and recieve notifications if they are in danger. System can help save endangered species.
+Frontend part for system for monitoring wild animals in national parks and reserves. It allows watching their geolocation and health (temperature and heart rate) which gets from IoT, and receive notifications if they are in danger. System can help save endangered species.
 
 Here are screenshots of program:
 
